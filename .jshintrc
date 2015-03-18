@@ -1,0 +1,27 @@
+{
+    "maxerr"        : 10,       // {int} Maximum error before stopping
+
+    // Enforcing
+    "camelcase"     : true,    // true: Identifiers must be in camelCase
+    "indent"        : 2,        // {int} Number of spaces to use for indentation
+    "newcap"        : true,    // true: Require capitalization of all constructor functions e.g. `new F()`
+    "quotmark"      : "single",    // Quotation mark consistency:
+                                //   false    : do nothing (default)
+                                //   true     : ensure whatever is used is consistent
+                                //   "single" : require single quotes
+                                //   "double" : require double quotes
+    "undef"         : true,
+    "latedef"       : false,
+
+    // Environments
+    "browser"       : true,     // Web Browser (window, document, etc)
+    "jquery"        : true,    // jQuery
+
+  // Custom Globals
+    "globals"       : {
+      "localStorage": true,
+      "angular"     : true,
+      "app"         : true,
+      "console"     : true
+    }        // additional predefined global variables
+}
