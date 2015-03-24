@@ -25,7 +25,7 @@ app.factory('Auth', ['$http', 'SimpleHttp', function($http, SimpleHttp) {
         password_confirmation: passwordConfirmation
       }
     };
-    SimpleHttp.request('post', this.API_URL + 'registrations', postData)
+    SimpleHttp.request('post', this.API_URL + 'registrations.json', postData)
       .then(function(response,a,b,c) {
         console.log(response);
       })
