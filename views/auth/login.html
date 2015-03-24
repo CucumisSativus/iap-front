@@ -1,15 +1,16 @@
 <h1>{{ message }}</h1>
 <div class="row">
   <div class="col-sm-4 col-sm-offset-4">
-    <form ng-submit="formSubmit()">
-      <div class="form-group">
-          <input class="form-control" placeholder="Username" name="username" type="email" ng-model="form.username">
+    <form ng-submit="formSubmit()" name="loginForm">
+      <div class="form-group" ng-class="{'has-error': loginForm.username.$invalid && loginForm.username.$dirty, 'has-success': loginForm.username.$valid && loginForm.username.$dirty}">
+          <input class="form-control" required placeholder="Username" name="username" type="email" ng-model="form.email">
       </div>
-      <div class="form-group">
-          <input class="form-control" placeholder="Password" name="password" type="password" ng-model="form.password">
+      <div class="form-group" ng-class="{'has-error': loginForm.password.$invalid && loginForm.password.$dirty, 'has-success': loginForm.password.$valid && loginForm.password.$dirty}">
+          <input class="form-control" required placeholder="Password" ng-minlength="8" name="password" type="password" ng-model="form.password">
       </div>
 
-      <button type="submit" class="btn btn-default">Log me in</button>
+      <button type="submit" ng-disabled="loginForm.$invalid || loginForm.$pristine" class="btn btn-success">Log me in</button>
+      <a href="#/register" class="btn btn-default">Register</a>
     </form>
   </div>
 </div>

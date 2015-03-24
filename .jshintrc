@@ -22,6 +22,7 @@
       "localStorage": true,
       "angular"     : true,
       "app"         : true,
-      "console"     : true
+      "console"     : true,
+      "alert"       : true
     }        // additional predefined global variables
 }
