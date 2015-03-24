@@ -1,1 +1,17 @@
 <h1>{{ message }}</h1>
+<div>
+   <table>
+       <thead>
+           <tr>
+               <th>Name</th>
+               <th>Surname</th>     
+               <th></th>       
+           </tr>
+       </thead>
+       <tbody ng-repeat="person in users track by $index">
+           <td>{{person.name}}</td>
+           <td>{{person.surname}}</td>
+           <td>details | edit | remove</td>
+       </tbody>
+   </table>
+</div>
