@@ -6,15 +6,15 @@
                <th>First name</th>
                <th>Last name</th>
                <th>Created at</th>     
-               <th>Edited at</th>
+               <th>Updated at</th>
                <th></th>       
            </tr>
        </thead>
        <tbody ng-repeat="person in users track by $index">
-           <td>{{person.firstName}}</td>
-           <td>{{person.lastName}}</td>
-           <td></td>
-           <td></td>
+           <td>{{person.first_name}}</td>
+           <td>{{person.last_name}}</td>
+           <td>{{person.created_at}}</td>
+           <td>{{person.updated_at}}</td>
            <td>details | edit | remove</td>
        </tbody>
    </table>

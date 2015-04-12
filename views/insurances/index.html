@@ -1,1 +1,21 @@
 <h1>{{ message }}</h1>
+<div>
+   <table class="table">
+       <thead>
+           <tr>
+               <th>Id</th>
+               <th>Amount</th>
+               <th>Created at</th>     
+               <th>Updated at</th>
+               <th></th>       
+           </tr>
+       </thead>
+       <tbody ng-repeat="policy in policies track by $index">
+           <td>{{policy.id}}</td>
+           <td>{{policy.amount}}</td>
+           <td>{{policy.created_at}}</td>
+           <td>{{policy.updated_at}}</td>
+           <td>details | edit | remove</td>
+       </tbody>
+   </table>
+</div>
