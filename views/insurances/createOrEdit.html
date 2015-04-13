@@ -1,1 +1,13 @@
 <h1>{{ message }}</h1>
+<form action="">   
+    <div class="form-group">       
+        <label>Customer</label>    
+        <select class="form-control" style="width:350px;">
+            <option value=""></option>
+            <option ng-repeat="user in users" value="{{user.id}}">{{user.first_name}} {{user.last_name}}</option>
+        </select>        
+        <label>Amount</label>    
+        <input type="number" class="form-control" style="width:350px;">
+    </div>
+    <button type="submit" class="btn btn-default">Create</button>
+</form>
