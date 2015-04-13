@@ -20,6 +20,10 @@ app.config(['$routeProvider', function ($routeProvider) {
             templateUrl: 'views/users/createOrEdit.html',
             controller: 'UsersCreateOrEditController'
         })
+        .when('/users/edit', {
+            templateUrl: 'views/users/edit.html',
+            controller: 'UsersEditController'
+        })
         .when('/insurances', {
             templateUrl: 'views/insurances/index.html',
             controller: 'InsurancesIndexController'
@@ -27,5 +31,9 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when('/insurances/createOrEdit', {
             templateUrl: 'views/insurances/createOrEdit.html',
             controller: 'InsurancesCreateOrEditController'
+        })
+        .when('/insurances/edit', {
+            templateUrl: 'views/insurances/edit.html',
+            controller: 'InsurancesEditController'
         });
 }]);
