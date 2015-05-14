@@ -35,6 +35,7 @@ app.factory('Auth', ['$http', 'SimpleHttp', function($http, SimpleHttp) {
   };
 
   auth.signIn = function(email, password) {
+    var userToken;
     var postData = {
       user: {
        email: email,

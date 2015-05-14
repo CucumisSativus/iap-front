@@ -18,6 +18,27 @@ app.factory('SimpleHttp', ['$http', '$q', function($http, $q) {
 
         return (request.then(this.handleSuccess, this.handleError));
     };
+    
+    simpleHttp.headerRequest = function(method, url, data, headers) {
+        var headerRequest;
+        if (method === 'get') {
+            headerRequest = $http({
+                method: method,
+                url: url,
+                headers: headers
+            });
+        }
+        else {
+            headerRequest = $http({
+                method: method,
+                url: url,
+                headers: headers,
+                data: data
+            });
+        }
+
+        return (headerRequest.then(this.handleSuccess, this.handleError));
+    };
 
     simpleHttp.handleError = function(response) {
         return response;
