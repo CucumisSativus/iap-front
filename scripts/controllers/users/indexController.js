@@ -1,13 +1,12 @@
 app.controller('UsersIndexController', ['$scope', 'Auth', 'SimpleHttp', function ($scope, Auth, SimpleHttp) {
   Auth.redirectIfNotAuthorized();
     $scope.responseData = [];
-    var sth = {};
     var headers = {
         'X-User-Email': Auth.credentials.email,
         'X-User-Token': Auth.credentials.authToken
     };
     this.users = [];
-  SimpleHttp.headerRequest('get', 'http://iap1.null.yt/api/v1/customers', sth, headers)
+  SimpleHttp.headerRequest('get', 'http://iap1.null.yt/api/v1/customers', null, headers)
                 .then(function(response) {
                   if(response.status === 200 &&
                      response.data.success) {

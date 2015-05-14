@@ -13,8 +13,8 @@
        <tbody ng-repeat="policy in policies track by $index">
            <td>{{policy.id}}</td>
            <td>{{policy.amount}}</td>
-           <td>{{policy.created_at}}</td>
-           <td>{{policy.updated_at}}</td>
+           <td>{{policy.created_at | limitTo: 10}}</td>
+           <td>{{policy.updated_at | limitTo: 10}}</td>
            <td> <a href="#/insurances/edit"><span class="label label-info"><span class="glyphicon glyphicon-pencil"></span> Edit</span></a> <span class="label label-danger"><span class="glyphicon glyphicon-remove"></span> Delete</span></td>
        </tbody>
    </table>
