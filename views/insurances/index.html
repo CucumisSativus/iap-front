@@ -15,7 +15,10 @@
            <td>{{policy.amount}}</td>
            <td>{{policy.created_at | limitTo: 10}}</td>
            <td>{{policy.updated_at | limitTo: 10}}</td>
-           <td> <a href="#/insurances/edit"><span class="label label-info"><span class="glyphicon glyphicon-pencil"></span> Edit</span></a> <span class="label label-danger"><span class="glyphicon glyphicon-remove"></span> Delete</span></td>
+           <td> <a href="#/insurances/edit/{{policy.id}}"><span class="label label-info"><span class="glyphicon glyphicon-pencil"></span> Edit</span></a>
+           <a href="" ng-click="deleteInsurance(policy.id, $index)">
+           <span class="label label-danger">
+           <span class="glyphicon glyphicon-remove"></span> Delete</span></a></td>
        </tbody>
    </table>
 </div>

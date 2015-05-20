@@ -1,14 +1,58 @@
-app.controller('InsurancesEditController', ['$scope', 'Auth', function ($scope, Auth) {
+app.controller('InsurancesEditController', ['$scope', '$routeParams', 'Auth', 'SimpleHttp', function ($scope, $routeParams, Auth, SimpleHttp) {
   Auth.redirectIfNotAuthorized();
     
-    $scope.message = 'Edit';
-    $scope.insurance = {customer_id:'1',amount:'100'};
+    $scope.responseData = [];
+    var headers = {
+        'X-User-Email': Auth.credentials.email,
+        'X-User-Token': Auth.credentials.authToken,
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json'
+    };
     
-    $scope.users = [{id:'1',first_name:'Lesley',last_name:'Tristan',created_at:'2015-03-24',updated_at:'2015-03-24'},
-                    {id:'2',first_name:'Vergil', last_name:'Gareth',created_at:'2015-03-24',updated_at:'2015-03-24'},
-                    {id:'3',first_name:'Dannie', last_name:'Wallace',created_at:'2015-03-24',updated_at:'2015-03-24'},
-                    {id:'4',first_name:'Layton', last_name:'Liam',created_at:'2015-03-24',updated_at:'2015-03-24'},
-                    {id:'5',first_name:'Tom', last_name:'Leroy',created_at:'2015-03-24',updated_at:'2015-03-24'},
-                    {id:'6',first_name:'Kirby', last_name:'Ellery',created_at:'2015-03-24',updated_at:'2015-03-24'}];
-    $scope.selectedUser = $scope.users[$scope.insurance.customer_id-1];
+    $scope.form = {
+        customer_id : '',
+        amount : ''
+    };
+    
+    SimpleHttp.headerRequest('get', 'http://iap1.null.yt/api/v1/insurance_policies/'+$routeParams.insuranceId, null, headers)
+            .then(function(response) {
+              if(response.status === 200 &&
+                 response.data.success) {
+                  $scope.responseData = response.data.data;
+                  $scope.insurance = angular.fromJson($scope.responseData);
+                  $scope.form.amount = parseInt($scope.insurance.amount);
+                  
+            $scope.users = [];
+            SimpleHttp.headerRequest('get', 'http://iap1.null.yt/api/v1/customers', null, headers)
+                .then(function(response) {
+                  if(response.status === 200 &&
+                     response.data.success) {
+                      $scope.responseData = response.data.data;
+                      $scope.users = angular.fromJson($scope.responseData);          
+                      $scope.selectedUser = $scope.users[$scope.insurance.customer_id];
+                  }      
+                  else {
+                    Auth.handleError(response.data.error);
+                  }
+                });
+              }      
+              else {
+                Auth.handleError(response.data.error);
+              }
+    });
+    
+    $scope.formSubmitUpdateInsurance = function(){
+        $scope.form.customer_id = $scope.selectedUser.id;
+         SimpleHttp.headerRequest('put', 'http://iap1.null.yt/api/v1/insurance_policies/'+$routeParams.insuranceId, $scope.form, headers)
+            .then(function(response) {
+              if(response.status === 200 &&
+                 response.data.success) {
+                  $scope.responseData = response.data.data;                     
+              }      
+              else {
+                Auth.handleError(response.data.error);
+              } 
+         });
+        location.replace('#/insurances');
+    };
 }]);

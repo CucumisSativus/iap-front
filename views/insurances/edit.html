@@ -1,11 +1,11 @@
 <h1>{{ message }}</h1>
-<form action="">   
+<form ng-submit="formSubmitUpdateInsurance()">   
     <div class="form-group">       
         <label>Customer</label>    
-        <select class="form-control" style="width:350px;" data-ng-options="list_user.first_name+' '+list_user.last_name  for list_user in users" data-ng-model="selectedUser">
+        <select class="form-control" style="width:350px;" data-ng-options="list_user.first_name+' '+list_user.last_name for list_user in users" data-ng-model="selectedUser">
         </select>        
         <label>Amount</label>    
-        <input type="number" class="form-control" style="width:350px;" value={{insurance.amount}}>
+        <input type="number" class="form-control" style="width:350px;" value={{insurance.amount}} ng-model="form.amount">
     </div>
     <button type="submit" class="btn btn-default">Save</button>
 </form>

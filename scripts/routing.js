@@ -35,5 +35,9 @@ app.config(['$routeProvider', function ($routeProvider) {
         .when('/insurances/edit', {
             templateUrl: 'views/insurances/edit.html',
             controller: 'InsurancesEditController'
+        })
+        .when('/insurances/edit/:insuranceId', {
+            templateUrl: 'views/insurances/edit.html',
+            controller: 'InsurancesEditController'
         });
 }]);
