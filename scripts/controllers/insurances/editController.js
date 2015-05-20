@@ -47,12 +47,12 @@ app.controller('InsurancesEditController', ['$scope', '$routeParams', 'Auth', 'S
             .then(function(response) {
               if(response.status === 200 &&
                  response.data.success) {
-                  $scope.responseData = response.data.data;                     
+                  $scope.responseData = response.data.data;
+                  location.replace('#/insurances');
               }      
               else {
                 Auth.handleError(response.data.error);
               } 
-         });
-        location.replace('#/insurances');
+         });        
     };
 }]);

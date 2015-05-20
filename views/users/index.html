@@ -15,7 +15,7 @@
            <td>{{person.last_name}}</td>
            <td>{{person.created_at | limitTo: 10}}</td>
            <td>{{person.updated_at | limitTo: 10}}</td>
-           <td> <a href="#/users/edit"><span class="label label-info"><span class="glyphicon glyphicon-pencil"></span> Edit</span></a> <span class="label label-danger"><span class="glyphicon glyphicon-remove"></span> Delete</span></td>
+           <td> <a href="#/users/edit/{{person.id}}"><span class="label label-info"><span class="glyphicon glyphicon-pencil"></span> Edit</span></a> <span class="label label-danger"><span class="glyphicon glyphicon-remove"></span> Delete</span></td>
        </tbody>
    </table>
 </div>

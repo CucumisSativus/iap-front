@@ -1,10 +1,10 @@
 <h1>{{ message }}</h1>
-<form action="">   
+<form ng-submit="formSubmitUpdateCustomer()">   
     <div class="form-group">
         <label>First name</label>    
-        <input type="text" class="form-control" style="width:350px;" value={{user.first_name}}>
+        <input type="text" class="form-control" style="width:350px;" value={{user.first_name}} ng-model="form.first_name">
         <label>Last name</label>    
-        <input type="text" class="form-control" style="width:350px;" value={{user.last_name}}>
+        <input type="text" class="form-control" style="width:350px;" value={{user.last_name}} ng-model="form.last_name">
         </div>
         
         <button type="submit" class="btn btn-default">Save</button>

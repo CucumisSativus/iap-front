@@ -10,6 +10,7 @@ app.controller('UsersIndexController', ['$scope', 'Auth', 'SimpleHttp', function
                 .then(function(response) {
                   if(response.status === 200 &&
                      response.data.success) {
+                      this.users = [];
                       $scope.responseData = response.data.data;
                       $scope.users = angular.fromJson($scope.responseData);                      
                   }      
